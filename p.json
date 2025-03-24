@@ -1,0 +1,161 @@
+{
+    "targets": [
+      {
+        "isStage": true,
+        "name": "Stage",
+        "variables": {},
+        "lists": {},
+        "broadcasts": {},
+        "blocks": {},
+        "currentCostume": 0,
+        "costumes": [
+          {
+            "assetId": "cd21514d0531fdffb22204e0ec5ed84a",
+            "name": "backdrop1",
+            "md5ext": "cd21514d0531fdffb22204e0ec5ed84a.svg",
+            "dataFormat": "svg",
+            "rotationCenterX": 240,
+            "rotationCenterY": 180
+          }
+        ],
+        "sounds": [],
+        "volume": 100
+      },
+      {
+        "isStage": false,
+        "name": "Player",
+        "variables": {},
+        "lists": {},
+        "broadcasts": {},
+        "blocks": {
+          "move_left": {
+            "opcode": "event_whenkeypressed",
+            "next": "move_left_action",
+            "inputs": {},
+            "fields": {"KEY_OPTION": ["left arrow", null]},
+            "topLevel": true,
+            "x": 100,
+            "y": 100
+          },
+          "move_left_action": {
+            "opcode": "motion_changexby",
+            "next": null,
+            "inputs": {"DX": [1, "-10"]},
+            "fields": {},
+            "parent": "move_left"
+          },
+          "move_right": {
+            "opcode": "event_whenkeypressed",
+            "next": "move_right_action",
+            "inputs": {},
+            "fields": {"KEY_OPTION": ["right arrow", null]},
+            "topLevel": true,
+            "x": 200,
+            "y": 100
+          },
+          "move_right_action": {
+            "opcode": "motion_changexby",
+            "next": null,
+            "inputs": {"DX": [1, "10"]},
+            "fields": {},
+            "parent": "move_right"
+          },
+          "shoot": {
+            "opcode": "event_whenkeypressed",
+            "next": "create_bullet",
+            "inputs": {},
+            "fields": {"KEY_OPTION": ["space", null]},
+            "topLevel": true,
+            "x": 150,
+            "y": 100
+          },
+          "create_bullet": {
+            "opcode": "control_create_clone_of",
+            "next": null,
+            "inputs": {"CLONE_OPTION": [2, "Bullet"]},
+            "fields": {},
+            "parent": "shoot"
+          }
+        },
+        "currentCostume": 0,
+        "costumes": [
+          {
+            "name": "Nano",
+            "assetId": "b7853f557e3350a0ae3f672676bb5a3e",
+            "md5ext": "b7853f557e3350a0ae3f672676bb5a3e.svg",
+            "dataFormat": "svg",
+            "rotationCenterX": 48,
+            "rotationCenterY": 50
+          }
+        ],
+        "sounds": [],
+        "volume": 100,
+        "visible": true,
+        "x": 0,
+        "y": -100,
+        "size": 100,
+        "direction": 90,
+        "draggable": false,
+        "rotationStyle": "all around"
+      },
+      {
+        "isStage": false,
+        "name": "Bullet",
+        "variables": {},
+        "lists": {},
+        "broadcasts": {},
+        "blocks": {
+          "when_created": {
+            "opcode": "control_start_as_clone",
+            "next": "move_up",
+            "inputs": {},
+            "fields": {},
+            "topLevel": true,
+            "x": 100,
+            "y": 200
+          },
+          "move_up": {
+            "opcode": "motion_changeyby",
+            "next": "delete_if_offscreen",
+            "inputs": {"DY": [1, "10"]},
+            "fields": {},
+            "parent": "when_created"
+          },
+          "delete_if_offscreen": {
+            "opcode": "control_delete_this_clone",
+            "next": null,
+            "inputs": {},
+            "fields": {},
+            "parent": "move_up"
+          }
+        },
+        "currentCostume": 0,
+        "costumes": [
+          {
+            "name": "Dot",
+            "assetId": "106461f60e34ce231b323e2dd2d9f05b",
+            "md5ext": "106461f60e34ce231b323e2dd2d9f05b.svg",
+            "dataFormat": "svg",
+            "rotationCenterX": 5,
+            "rotationCenterY": 5
+          }
+        ],
+        "sounds": [],
+        "volume": 100,
+        "visible": false,
+        "x": 0,
+        "y": 0,
+        "size": 50,
+        "direction": 0,
+        "draggable": false,
+        "rotationStyle": "all around"
+      }
+    ],
+    "extensions": [],
+    "meta": {
+      "semver": "3.0.0",
+      "vm": "0.2.0",
+      "agent": "Mozilla/5.0"
+    }
+  }
+  
